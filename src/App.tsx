@@ -4,7 +4,7 @@ import Dashboard from './dashboard/Dashboard';
 import { BrowserRouter, Route, Routes } from "react-router";
 import RssFeed from './news/News.tsx';
 import MenuPage from './menu/MenuPage.tsx';
-import {Context} from './Context.tsx';
+import { Context } from './Context.tsx';
 
 import Courses from './courses/Courses.tsx';
 import { useEffect, useState } from 'react';
@@ -12,30 +12,36 @@ import { useEffect, useState } from 'react';
 import AIComponent from './AI/AI.tsx';
 
 function App() {
-  const [mobile, setMobile] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [desktopMenuHeight, setDesktopMenuHeight] = useState(0);
-  useEffect(() => {
-    setMobile(window.innerWidth < 600);
-  }, []);
-  // const contextValues = {mobile: useMediaQuery('(max-width: 600px)')};
+	const [mobile, setMobile] = useState(false);
+	const [drawerOpen, setDrawerOpen] = useState(false);
+	const [desktopMenuHeight, setDesktopMenuHeight] = useState(0);
+	useEffect(() => {
+		setMobile(window.innerWidth < 600);
+	}, []);
 
-  return (
-    <Context.Provider value={{mobile: mobile, drawer: drawerOpen, drawerFunction: setDrawerOpen,
-      desktopMenuHeight: desktopMenuHeight, setDesktopMenuHeight: setDesktopMenuHeight
-    }}>
-      <BrowserRouter>
-        {/* <SubdomainRouter /> */}
-        <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/news' element={<RssFeed />} />  
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/menu' element={<MenuPage />} />
-          <Route path='/insights' element={<AIComponent />} />
-        </Routes>
-      </BrowserRouter>
-    </Context.Provider>
-  );
+	const contextValues = {
+		mobile: mobile,
+		drawer: drawerOpen,
+		drawerFunction: setDrawerOpen,
+
+		desktopMenuHeight: desktopMenuHeight,
+		setDesktopMenuHeight: setDesktopMenuHeight
+	}
+
+	return (
+		<Context.Provider value={contextValues}>
+			<BrowserRouter>
+				{/* <SubdomainRouter /> */}
+				<Routes>
+					<Route path='/' element={<Dashboard />} />
+					<Route path='/news' element={<RssFeed />} />
+					<Route path='/courses' element={<Courses />} />
+					<Route path='/menu' element={<MenuPage />} />
+					<Route path='/insights' element={<AIComponent />} />
+				</Routes>
+			</BrowserRouter>
+		</Context.Provider>
+	);
 }
 
 // function SubdomainRouter() {
@@ -60,7 +66,7 @@ function App() {
 //   if (subdomain === 'dashboard') return <Dashboard />;
 
 //   // Default to the main dashboard if no subdomain is matched
-  
+
 //   return <Dashboard />;
 // }
 

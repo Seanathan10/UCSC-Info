@@ -8,4 +8,4 @@ export interface ContextType {
     setDesktopMenuHeight: (value: number) => void;
 }
 
-export const Context = createContext <ContextType | null> (null);
+export const Context = createContext<ContextType | null>(null);

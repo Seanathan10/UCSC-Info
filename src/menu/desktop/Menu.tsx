@@ -3,24 +3,6 @@ import {MenuPanel} from "../MenuPanel.tsx";
 import {type Menu} from "../api.ts";
 
 export function Menu({children}: {children: Record<string, Menu>}) {
-    // const [desktopMenuHeight, setDesktopMenuHeight] = useState(0);
-    // const measureRef = useRef<HTMLDivElement>(null);
-
-    // useEffect(() => {
-    //     const updateScroll = () => {
-    //         if (measureRef.current) {
-    //             console.log("measureRef", measureRef.current.scrollHeight - measureRef.current.clientHeight);
-    //             setDesktopMenuHeight(measureRef.current.scrollHeight - measureRef.current.clientHeight + 25);
-    //         }
-    //     }
-    //     updateScroll();
-    //     window.addEventListener('resize', updateScroll);
-    //     return () => window.removeEventListener('resize', updateScroll);
-    //     // const target = measureRef?.current || window;
-    //     // target.addEventListener('scroll', handleScroll);
-    //     // return () => target.removeEventListener('scroll', handleScroll);
-    // }, []);
-
     return (
         <>
             <div style={{display: 'flex', flexDirection: 'row', overflow: 'scroll', marginTop: 100}}
