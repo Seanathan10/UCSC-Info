@@ -213,14 +213,14 @@ const AIComponent: React.FC = () => {
             <feBlend in="SourceGraphic" in2="goo" />
           </filter>
         </svg>
-        <div className="gradients-container">
+        {/* <div className="gradients-container">
           <div className="g1"></div>
           <div className="g2"></div>
           <div className="g3"></div>
           <div className="g4"></div>
           <div className="g5"></div>
           <div className="interactive"></div>
-        </div>
+        </div> */}
       </div>
 
       <div className="ucsc-card NewsCard" style={{ zIndex: 10 }}>

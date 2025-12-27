@@ -3,7 +3,6 @@ import Dashboard from './dashboard/Dashboard';
 
 import { BrowserRouter, Route, Routes } from "react-router";
 import RssFeed from './news/News.tsx';
-import Peak from './peak';
 import MenuPage from './menu/MenuPage.tsx';
 import {Context} from './Context.tsx';
 
@@ -30,7 +29,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/news' element={<RssFeed />} />  
-          <Route path='/peak' element={<Peak />} />
           <Route path='/courses' element={<Courses />} />
           <Route path='/menu' element={<MenuPage />} />
           <Route path='/insights' element={<AIComponent />} />

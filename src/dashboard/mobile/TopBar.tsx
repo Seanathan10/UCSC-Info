@@ -4,7 +4,7 @@ import TopBarButton from "../../TopBarButton";
 import { Context } from "../../Context";
 
 export function TopBar() {
-    const topBarButtons = ['ucsc.info', 'news', 'peak', 'menu', 'courses'];
+    const topBarButtons = ['ucsc.info', 'news', 'menu', 'courses'];
     const cv = useContext(Context);
     return (
         <>
