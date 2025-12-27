@@ -21,8 +21,8 @@ function App() {
 
 	const contextValues = {
 		mobile: mobile,
-		drawer: drawerOpen,
-		drawerFunction: setDrawerOpen,
+		isDrawerOpen: drawerOpen,
+		setDrawerOpen: setDrawerOpen,
 
 		desktopMenuHeight: desktopMenuHeight,
 		setDesktopMenuHeight: setDesktopMenuHeight

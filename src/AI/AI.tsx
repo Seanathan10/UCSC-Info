@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useMediaQuery } from "@mantine/hooks";
-import { TopBar as MobileTopBar } from "../dashboard/mobile/TopBar.tsx";
-import { TopBar as DesktopTopBar } from "../dashboard/desktop/TopBar.tsx";
+import { TopBar as MobileTopBar } from "../components/navbar/mobile/TopBar.tsx";
+import { TopBar as DesktopTopBar } from "../components/navbar/desktop/TopBar.tsx";
 import "./FuturisticAI.css";
 import "./AI-InterestCard.css";
 import DiningInsights from "../menu/MenuAI.tsx";

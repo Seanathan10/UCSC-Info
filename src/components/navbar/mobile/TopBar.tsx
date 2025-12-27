@@ -1,20 +1,16 @@
 import { useContext } from "react";
+import { Context } from "../../../Context";
+import NavBarButtons from "../NavbarButtons";
 import "./TopBar.css";
-import TopBarButton from "../TopBarButton";
-import { Context } from "../../Context";
 
 export function TopBar() {
-	const topBarButtons = {
-		'Home': '/',
-		...Object.fromEntries(['Insights', 'News', 'Menu', 'Courses'].map(k => [k, `/${k.toLowerCase()}`]))
-	}
 	const ctx = useContext(Context);
 	return (
 		<>
 			<header className="app-bar">
 
-				<div className={`hamburger ${ctx?.drawer ? 'open' : ''}`}
-					onClick={() => ctx?.drawerFunction(!ctx?.drawer)}
+				<div className={`hamburger ${ctx?.isDrawerOpen ? 'open' : ''}`}
+					onClick={() => ctx?.setDrawerOpen(!ctx?.isDrawerOpen)}
 				>
 					<span />
 					<span />
@@ -23,11 +19,9 @@ export function TopBar() {
 				<div className="app-bar__title">ucsc.info</div>
 			</header>
 
-			<aside className={`drawer ${ctx?.drawer ? 'open' : ''}`}>
+			<aside className={`drawer ${ctx?.isDrawerOpen ? 'open' : ''}`}>
 				<nav className="drawer__nav">
-					{Object.entries(topBarButtons).map(([item, path]) => (
-						<TopBarButton path={path} name={item} onClick={() => ctx!.drawerFunction(false)}/>
-					))}
+					<NavBarButtons onClick={() => ctx?.setDrawerOpen(false)} />
 				</nav>
 			</aside>
 		</>

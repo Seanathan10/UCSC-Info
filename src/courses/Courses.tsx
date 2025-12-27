@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { TopBar as MobileTopBar } from "../dashboard/mobile/TopBar";
-import { TopBar as DesktopTopBar } from "../dashboard/desktop/TopBar";
+import { TopBar as MobileTopBar } from "../components/navbar/mobile/TopBar.tsx";
+import { TopBar as DesktopTopBar } from "../components/navbar/desktop/TopBar.tsx";
 import Card from "./Card";
 import DetailedView from "./DetailedView";
 import Search from './Search.tsx';

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
-import { TopBar as MobileTopBar } from "../dashboard/mobile/TopBar";
-import { TopBar as DesktopTopBar } from "../dashboard/desktop/TopBar";
+import { TopBar as MobileTopBar } from "../components/navbar/mobile/TopBar";
+import { TopBar as DesktopTopBar } from "../components/navbar/desktop/TopBar";
 import "./News.css";
 import {Error} from "../Loading";
 import { BASE_API_URL } from "../constants";

@@ -1,6 +1,6 @@
 
-import {TopBar as MobileTopBar} from "../dashboard/mobile/TopBar";
-import {TopBar as DesktopTopBar} from "../dashboard/desktop/TopBar";
+import {TopBar as MobileTopBar} from "../components/navbar/mobile/TopBar";
+import {TopBar as DesktopTopBar} from "../components/navbar/desktop/TopBar";
 import { Context } from "../Context";
 import {Menu as MobileMenu} from './mobile/Menu';
 import {Menu as DesktopMenu} from './desktop/Menu';
