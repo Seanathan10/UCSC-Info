@@ -22,6 +22,9 @@ api.add_middleware(
     allow_headers=["*"],
 )
 
+@api.get("/courses/terms")
+async def getTerms():
+    return scraper.getTerms()
 
 @api.get("/courses")
 async def getAllCourses(

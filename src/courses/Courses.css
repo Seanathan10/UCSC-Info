@@ -17,6 +17,7 @@
     /* align-items: center; */
     padding-right: 23px;
 }
+
 .courseList {
     flex: 1;
     overflow-y: auto;

@@ -32,7 +32,6 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
 				</svg>
 				<input
 					className="searchBox"
-					style={{borderRadius: '8px 0 0 8px'}}
 					type="text"
 					placeholder="Search..."
 					value={searchText}
@@ -46,11 +45,7 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
 					}}
 				/>
 				<button 
-					style={{
-						padding: '11.5px 20px', 
-						backgroundColor: "#768fffff", 
-						borderRadius: '0 8px 8px 0'
-					}}
+					className="searchButton"
 					onClick={() => {
 						onSearch(searchText);
 					}}

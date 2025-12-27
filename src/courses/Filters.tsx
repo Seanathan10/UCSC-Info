@@ -1,16 +1,44 @@
+import {useEffect, useState} from "react";
+import {BASE_API_URL} from "../constants";
+// import {data, data} from "react-router";
+
 interface FilterProps {
     isMobile?: boolean,
 
-    selectedTerm: string,
     setTerm: (term: string) => void,
     setGE: (ge: string) => void,
     setStatus: (status: string) => void,
     setTimes: (times: string) => void,
 }
 
+async function getTermOptions() {
+    const response = await fetch(`${BASE_API_URL}/courses/terms`);
 
-export default function Filters({ selectedTerm, setTerm, setGE, setStatus, setTimes }: FilterProps) {
+    let data = await response.json();
 
+    data = data.map((term: Record<string, string>) => {
+        return {
+            label: term.label.replace('Quarter', '').trim(),
+            value: term.value
+        }
+    });
+
+    const latestQuarters = data.slice(0, 8); // Get only the latest 8 quarters
+    return latestQuarters;
+}
+
+export default function Filters({ setTerm, setGE, setStatus, setTimes }: FilterProps) {
+
+    const [termOptions, setTermOptions] = useState<Array<Record<string, string>>>([]);
+    const [selectedTerm, setSelectedTerm] = useState<string>("");
+
+    useEffect(() => {
+        (async () => {
+            const options = await getTermOptions();
+            setTermOptions(options);
+        })();
+
+    }, []);
 
     return (
         <div className="filters" style={{ width: '97.5%', paddingLeft: '10px', display: 'flex', flexDirection: 'row', gap: '4px' }}>
@@ -22,12 +50,18 @@ export default function Filters({ selectedTerm, setTerm, setGE, setStatus, setTi
                 className="dropdown"
                 style={{ width: 'calc(30% - 3px)' }}
                 value={selectedTerm}
-                onChange={(e) => { setTerm(e.target.value); }}
+                onChange={(e) => {
+                    setTerm(e.target.value); 
+                    setSelectedTerm(e.target.value);
+                }}
             >
-                <option value="2254">Summer 2025</option>
+                {termOptions.map((termOption: Record<string, string>, idx: number) => (
+                    <option key={idx} value={termOption.value}>{termOption.label}</option>
+                ))}
+                {/* <option value="2254">Summer 2025</option>
                 <option value="2252">Spring 2025</option>
                 <option value="2250">Winter 2024</option>
-                <option value="2248">Fall 2024</option>
+                <option value="2248">Fall 2024</option> */}
             </select>
 
             {/* GE type selection */}

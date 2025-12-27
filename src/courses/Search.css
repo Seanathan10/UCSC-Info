@@ -11,9 +11,29 @@
     padding: 12px 20px 12px 40px;
     font-size: 16px;
     border: 0px solid #040404;
-    border-radius: 8px;
+    border-radius: 50px 0 0 50px;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.18);
     outline: none;
     transition: all 0.3s;
     box-sizing: border-box
+}
+
+.searchButton {
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.18);
+    background-color: #768fffff;
+    padding: 11px 20px;
+    color: white;
+    transition: background-color ease-in-out 0.3s;
+
+}
+
+.searchButton:hover {
+    background-color: #4c63b8;
+}
+
+.searchButton:active,
+.searchButton:focus {
+    outline: none;
 }

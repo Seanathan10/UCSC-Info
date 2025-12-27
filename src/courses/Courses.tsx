@@ -55,7 +55,7 @@ function parseInput(query: string) {
 }
 
 export default function Courses() {
-	const [courseData, setCourseData] = useState<Course[]>([]);
+	const [courses, setCourses] = useState<Course[]>([]);
 	const [loading, setLoading] = useState(false);
 	const isMobile = useMediaQuery("(max-width: 768px)");
 	const [detailedData, setDetailedData] = useState<any>(null);
@@ -77,7 +77,7 @@ export default function Courses() {
 
 			const response = await fetch(`${BASE_API_URL}/courses?term=${term}&regStatus=all&department=${inputData.dept}&catalogNum=${inputData.catalogNum}&ge=${ge}&regStatus=${status}&meetingTimes=${time}`);
 			const data = await response.json();
-			setCourseData(data);
+			setCourses(data);
 		} catch (error) {
 			console.error("Failed to fetch courses:", error);
 		} finally {
@@ -86,7 +86,6 @@ export default function Courses() {
 	}
 
 	const getDetailedView = async (courseTerm: string, courseID: string) => {
-		console.log("detailed view called with term", courseTerm)
 		const response = await fetch(`https://my.ucsc.edu/PSIGW/RESTListeningConnector/PSFT_CSPRD/SCX_CLASS_DETAIL.v1/${courseTerm}/${courseID}`);
 		const data = await response.text();
 
@@ -126,13 +125,13 @@ export default function Courses() {
 						marginTop: 60
 					}}>
 						<Search onSearch={onSearch}/>
-						<Filters isMobile={isMobile} selectedTerm={term} setTerm={setTerm} setGE={setGE} setTimes={setTimes} setStatus={setStatus} />
+						<Filters isMobile={isMobile} setTerm={setTerm} setGE={setGE} setTimes={setTimes} setStatus={setStatus} />
 					</div>
 					{loading && <Loading />}
 					<div className="courseList" style={{ marginTop: isMobile ? '20px' : '30px' }}>
-						{isFirstLoad ? <h3>Search for a course to get started</h3> :
-						!courseData || courseData.length === 0 ? <h3>No results found</h3> :
-						courseData.map((course: Course, index: number) => (
+						{isFirstLoad ? <h3>Search for a course to get started!</h3> :
+						!courses || courses.length === 0 ? <h3>No results found</h3> :
+						courses.map((course: Course, index: number) => (
 								<Card
 									key={index}
 									classStatus={course.status}

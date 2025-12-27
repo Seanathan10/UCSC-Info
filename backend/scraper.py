@@ -152,3 +152,19 @@ queryPisa(
     "S",
     "P"
 )
+
+def getTerms():
+    response = requests.get("https://pisa.ucsc.edu/class_search/index.php")
+    responseData: str = response.text
+
+    soup = BeautifulSoup(responseData, 'lxml')
+    termSelect = soup.find("select", {"id": "term_dropdown"})
+    options = termSelect.find_all("option")
+
+    terms: list[dict[str, str]] = []
+    for option in options:
+        termValue = option.get("value")
+        termName = option.text.strip()
+        terms.append({'value': termValue, 'label': termName}) 
+
+    return terms
